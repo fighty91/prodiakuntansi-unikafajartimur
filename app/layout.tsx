@@ -15,6 +15,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Prodi Akuntansi Unika Fajar Timur",
   description: "Menjadi pusat unggulan pendidikan, penelitian, dan pengabdian di bidang ekonomi dan farmasi di Indonesia Timur yang berdaya saing global, berbasis kearifan lokal, melalui penguatan spirit intelektual populis dan spiritual ekologis",
+  // Konfigurasi favicon di bawah ini:
+  icons: {
+    icon: [
+      { url: '/assets/logo.svg', type: 'image/svg+xml' }, // SVG Utama
+      { url: '/favicon.ico', type: 'image/x-icon' },      // Fallback .ico
+    ],
+    // Opsional: Jika Anda juga punya icon khusus untuk Apple/iOS
+    apple: '/assets/apple-touch-icon.png', 
+  },
 };
 
 export default function RootLayout({
