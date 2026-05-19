@@ -187,15 +187,23 @@ export default function LandingPage() {
           <h2 className="text-2xl md:text-5xl font-black mt-3 text-slate-900">Visi & Misi Utama</h2>
         </motion.div>
 
+        {/* ======================================================== */}
+        {/* 1. KONTAINER VISI (Berdiri Sendiri - Memanjang Penuh) */}
+        {/* ======================================================== */}
         <motion.div 
           initial="hidden" 
           whileInView="visible" 
-          viewport={{ once: true, margin: "-50px" }} 
-          variants={staggerContainer} 
-          className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={scaleUp} 
+          // {/* REVISI: lg:min-h-[220px] ditambah flexbox agar box tinggi kokoh dan teks presisi di tengah */}
+          className="bg-gradient-to-br from-slate-900 to-blue-950 p-6 md:p-10 rounded-2xl border border-slate-800 text-white relative overflow-hidden shadow-sm group w-full lg:min-h-[220px] flex flex-col justify-center"
         >
-          {/* Card Visi */}
-          <motion.div variants={scaleUp} className="lg:col-span-3 bg-gradient-to-br from-slate-900 to-blue-950 p-6 md:p-10 rounded-2xl border border-slate-800 text-white relative overflow-hidden shadow-sm group">
+          <div className="absolute right-0 bottom-0 translate-x-10 translate-y-10 opacity-5 group-hover:scale-110 transition-transform duration-500">
+            <Target className="w-80 h-80 text-white" />
+          </div>
+
+          {/* z-10 memastikan teks berada di atas bayangan icon background */}
+          <div className="relative z-10">
             <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider mb-3">
               <Target className="h-4 w-4" />
               Visi Institusi
@@ -203,41 +211,61 @@ export default function LandingPage() {
             <p className="text-sm md:text-xl font-medium leading-relaxed italic border-l-4 border-amber-400 pl-3 md:pl-4 text-slate-100">
               “Menjadi pusat unggulan pendidikan, penelitian, dan pengabdian di bidang ekonomi di Indonesia Timur yang berdaya saing global, berbasis kearifan lokal, melalui penguatan spirit intelektual populis dan spiritual ekologis”
             </p>
-          </motion.div>
-
-          {/* Cards Misi */}
-          <motion.div variants={fadeInUp} className="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col justify-between">
-            <div>
-              <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xs mb-3">1</div>
-              <h4 className="font-bold text-sm sm:text-base text-slate-900 mb-1">Pendidikan Berkualitas</h4>
-              <p className="text-slate-500 text-xs leading-relaxed">Menyelenggarakan pendidikan tinggi di bidang ekonomi yang menghasilkan lulusan literat, profesional, dan berintegritas, serta mampu mengabdikan ilmunya bagi kesejahteraan masyarakat.</p>
-            </div>
-          </motion.div>
-
-          <motion.div variants={fadeInUp} className="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col justify-between">
-            <div>
-              <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs mb-3">2</div>
-              <h4 className="font-bold text-sm sm:text-base text-slate-900 mb-1">Penelitian Inovatif</h4>
-              <p className="text-slate-500 text-xs leading-relaxed">Mengembangkan penelitian yang inovatif dan berkelanjutan dengan menempatkan manusia dan alam sebagai satu kesatuan dalam upaya mencapai kebaikan bersama.</p>
-            </div>
-          </motion.div>
-
-          <motion.div variants={fadeInUp} className="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col justify-between">
-            <div>
-              <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs mb-3">3</div>
-              <h4 className="font-bold text-sm sm:text-base text-slate-900 mb-1">Pengabdian & Budaya Papua</h4>
-              <p className="text-slate-500 text-xs leading-relaxed">Melaksanakan pengabdian kepada masyarakat yang berorientasi pada pemberdayaan potensi lokal, peningkatan kualitas hidup, serta pelestarian lingkungan dan budaya masyarakat Papua.</p>
-            </div>
-          </motion.div>
-
-          <motion.div variants={scaleUp} className="lg:col-span-3 bg-blue-50/40 p-4 sm:p-5 rounded-2xl border border-blue-100 shadow-sm flex items-center gap-3 w-full">
-            <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold shrink-0 text-xs">4</div>
-            <div className="min-w-0 flex-1">
-              <h4 className="font-bold text-slate-900 text-xs sm:text-base mb-0.5">Kemitraan Strategis Global</h4>
-              <p className="text-slate-600 text-[11px] sm:text-sm leading-normal">Mengembangkan jejaring kemitraan strategis di tingkat lokal, nasional, dan global untuk meningkatkan relevansi dan daya saing lulusan.</p>
-            </div>
-          </motion.div>
+          </div>
         </motion.div>
+
+
+        {/* SPACING / JARAK ANTARA VISI DAN MISI (mt-8 memberikan space yang pas) */}
+        <div className="mt-8 w-full">
+
+          {/* ======================================================== */}
+          {/* 2. KONTAINER MISI (Dipisah & Dibuat Tidak Terisi Penuh) */}
+          {/* ======================================================== */}
+          <motion.div 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true, margin: "-50px" }} 
+            variants={staggerContainer} 
+            // {/* max-w-5xl & mx-auto membuat grid misi mengumpul proporsional di tengah, tidak melar penuh ke kanan */}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 w-full max-w-5xl mx-auto"
+          >
+            {/* Misi 1 */}
+            <motion.div variants={fadeInUp} className="lg:col-span-3 bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col justify-between hover:border-blue-300 transition-colors">
+              <div>
+                <div className="w-7 h-7 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-xs mb-3">1</div>
+                <h4 className="font-bold text-sm sm:text-base text-slate-900 mb-1.5">Pendidikan Berkualitas</h4>
+                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">Menyelenggarakan pendidikan tinggi di bidang ekonomi yang menghasilkan lulusan literat, profesional, dan berintegritas, serta mampu mengabdikan ilmunya bagi kesejahteraan masyarakat.</p>
+              </div>
+            </motion.div>
+
+            {/* Misi 2 */}
+            <motion.div variants={fadeInUp} className="lg:col-span-3 bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col justify-between hover:border-amber-300 transition-colors">
+              <div>
+                <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs mb-3">2</div>
+                <h4 className="font-bold text-sm sm:text-base text-slate-900 mb-1.5">Penelitian Inovatif</h4>
+                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">Mengembangkan penelitian yang inovatif dan berkelanjutan dengan menempatkan manusia dan alam sebagai satu kesatuan dalam upaya mencapai kebaikan bersama.</p>
+              </div>
+            </motion.div>
+
+            {/* Misi 3 */}
+            <motion.div variants={fadeInUp} className="lg:col-span-3 bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col justify-between hover:border-emerald-300 transition-colors">
+              <div>
+                <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs mb-3">3</div>
+                <h4 className="font-bold text-sm sm:text-base text-slate-900 mb-1.5">Pengabdian & Budaya Papua</h4>
+                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">Melaksanakan pengabdian kepada masyarakat yang berorientasi pada pemberdayaan potensi lokal, peningkatan kualitas hidup, serta pelestarian lingkungan dan budaya masyarakat Papua.</p>
+              </div>
+            </motion.div>
+
+            {/* Misi 4 */}
+            <motion.div variants={fadeInUp} className="lg:col-span-3 bg-white p-6 rounded-2xl border border-slate-200/60 shadow-sm flex flex-col justify-between hover:border-indigo-300 transition-colors">
+              <div>
+                <div className="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs mb-3">4</div>
+                <h4 className="font-bold text-sm sm:text-base text-slate-900 mb-1.5">Kemitraan Strategis Global</h4>
+                <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">Mengembangkan jejaring kemitraan strategis di tingkat lokal, nasional, dan global untuk meningkatkan relevansi dan daya saing lulusan.</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* 7 ALASAN MEMILIH AKUNTANSI */}
