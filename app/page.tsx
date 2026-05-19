@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, CheckCircle2, Instagram, Users, Sparkles, BookOpen, GraduationCap, Phone, FileText, Target, Eye } from 'lucide-react';
+import Image from 'next/image';
 
 export default function LandingPage() {
   const [name, setName] = useState('');
@@ -45,20 +46,14 @@ export default function LandingPage() {
       <header className="sticky top-0 z-50 backdrop-blur-md bg-white/70 border-b border-slate-200/60">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3 font-extrabold text-sm md:text-base tracking-wider text-slate-900">
-            <svg className="h-10 w-10 drop-shadow-sm" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M250 50 C280 110 320 120 320 160 C320 200 280 230 250 230 C220 230 180 200 180 160 C180 120 220 110 250 50 Z" fill="#E19E2B"/>
-              <path d="M250 80 L250 200" stroke="#4A340E" strokeWidth="10" strokeLinecap="round"/>
-              <path d="M235 110 L265 110" stroke="#4A340E" strokeWidth="8" strokeLinecap="round"/>
-              <circle cx="215" cy="170" r="12" fill="#4A340E" opacity="0.7"/>
-              <circle cx="250" cy="140" r="8" fill="#FFFFFF"/>
-              <path d="M230 240 C170 200 130 240 140 330 C180 340 215 300 235 255 Z" fill="#24426F"/>
-              <path d="M120 250 C110 290 125 330 155 350 C145 310 135 270 120 250 Z" fill="#E19E2B"/>
-              <path d="M270 240 C330 200 370 240 360 330 C320 340 285 300 265 255 Z" fill="#24426F"/>
-              <path d="M380 250 C390 290 375 330 345 350 C355 310 365 270 380 250 Z" fill="#E19E2B"/>
-              <path d="M150 350 C180 420 320 420 350 350 L330 360 C310 400 190 400 170 360 Z" fill="#24426F"/>
-              <path d="M180 387 L185 405 M215 397 L223 413 M285 397 L277 413 M320 387 L315 405" stroke="#24426F" strokeWidth="10" strokeLinecap="round"/>
-              <path d="M250 350 L250 400 M235 370 L265 370" stroke="#1A3052" strokeWidth="12" strokeLinecap="round"/>
-            </svg>
+            {/* Panggil langsung file logo.svg dari folder public */}
+            <Image
+              src="/logo.svg" 
+              alt="Logo UNIKA Fajar Timur Papua" 
+              width={40} 
+              height={40} 
+              className="drop-shadow-sm object-contain"
+            />
             <div className="flex flex-col leading-tight">
               <span>UNIKA</span>
               <span className="text-xs text-amber-600 font-semibold tracking-normal">FAJAR TIMUR PAPUA</span>
