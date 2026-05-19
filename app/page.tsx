@@ -347,14 +347,19 @@ export default function LandingPage() {
                   </button>
                 </form>
 
-                {/* BOX UNTUK QR CODE PENDAFTARAN */}
-                <div className="flex flex-col items-center justify-center bg-white border border-slate-200 p-4 rounded-xl text-center order-1 md:order-2 md:h-full md:justify-start">
-                  <div className="w-24 h-24 bg-slate-100 border border-dashed border-slate-300 rounded-lg flex flex-col items-center justify-center text-slate-400 mb-2 relative group hover:bg-blue-50 hover:border-blue-300 transition-colors">
-                    <QrCode className="h-10 w-10 text-slate-300 group-hover:text-blue-500 transition-colors" />
-                    <span className="text-[9px] text-slate-400 font-medium absolute bottom-1">Tempel QR Code</span>
+                {/* BOX UNTUK QR CODE PENDAFTARAN DINAMIS (MENGGUNAKAN API GRATIS) */}
+                <div className="flex flex-col items-center justify-center bg-white border border-slate-200 p-4 rounded-xl text-center order-1 md:order-2 md:h-full md:justify-center shadow-sm">
+                  <div className="w-28 h-28 bg-white border border-slate-200 rounded-lg flex items-center justify-center p-2 mb-2 hover:scale-105 transition-transform duration-300">
+                    {/* Menggunakan API goqr.me dinamis gratis dengan tautan Google Form Anda */}
+                    <img 
+                      src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(googleFormUrl)}`}
+                      alt="QR Code Pendaftaran UNIKA Akuntansi" 
+                      className="w-full h-full object-contain"
+                      loading="lazy"
+                    />
                   </div>
-                  <span className="text-[11px] font-bold text-slate-800">Scan QR Code</span>
-                  <span className="text-[9px] text-slate-400 mt-0.5">Pendaftaran Langsung Cepat</span>
+                  <span className="text-[11px] font-bold text-slate-800 uppercase tracking-wider">Scan Untuk Daftar</span>
+                  <span className="text-[9px] text-slate-400 mt-0.5 max-w-[100px] leading-tight">Arahkan kamera HP ke kode QR ini</span>
                 </div>
 
               </div>
